@@ -1,0 +1,60 @@
+<!-- vb default-layout:flex -->
+<div class="oj-flex">
+    <div class="oj-panel oj-flex-item oj-sm-5 oj-md-3" id="div-1651458888-2">
+        <div class="oj-flex">
+            <oj-file-picker id="oj-file-picker-1084591017-1" accept='[[["image/*"]]]' selection-mode="single" on-oj-select="[[$listeners.ojFilePicker10845910171OjSelect]]" select-on="click" style="height:30" class="oj-flex-item"></oj-file-picker>
+        </div>
+    </div>
+    <div class="oj-panel oj-flex-item oj-md-2 oj-sm-7" id="div-1651458888-1">
+        <div class="oj-flex">
+            <oj-button id="oj-button-1651458888-1" on-oj-action="[[$listeners.ojButton16514588881OjAction]]" chroming="full" style="width:120px" class="oj-flex-item">Refresh   
+                
+        
+        
+                
+                <span class="vb-icon vb-icon-table" id="span-1651458888-1" slot="startIcon"></span>
+            </oj-button>
+        </div>
+        <div class="oj-flex">
+            <oj-button id="oj-button-1651458888-2" style="width:120px" on-oj-action="[[$listeners.ojButton16514588882OjAction]]" class="oj-flex-item">Clear All
+
+
+        
+                
+                <span class="vb-icon vb-icon-delete" id="span-1651458888-2" slot="startIcon"></span>
+            </oj-button>
+        </div>
+    </div>
+    <div class="oj-panel oj-flex-item oj-sm-12 oj-md-6" id="div-1651458888-3">
+        <div class="oj-flex">
+            <div class="oj-flex-item">
+                <img id="img-1651458888-2" :src="[[ $variables.wordcloudLink ]]" on-click="[[$listeners.img16514588882Click]]">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="oj-flex">
+    <oj-list-view id="oj-list-view-1651458888-1" class="oj-flex-item oj-full-width" data="[[$page.variables.getListListSDP]]">
+        <template slot="itemTemplate">
+            <div class="oj-flex">
+                <div class="oj-flex-item oj-sm-5 oj-md-2">
+                    <img :src="[[ $current.data.LINK ]]" width="100" :id="[['img-1651458888-1-' + $current.index]]" style="" on-click="[[$listeners.img16514588881Click]]">
+                </div>
+                <oj-text-area :id="[['oj-text-area-1651458888-2-' + $current.index]]" value='[[ "Host: " + $current.data.HOSTNAME + "\nIP: " + $current.data.IPADDR + "\nTime: " + $current.data.DURATION ]]' readonly="true" rows="6" class="oj-form-control-text-align-start oj-flex-item oj-md-2 oj-sm-6"></oj-text-area>
+                <oj-text-area value="[[ $current.data.TEXT ]]" :id="[['oj-text-area-1651458888-1-' + $current.index]]" rows="6" class="oj-flex-item oj-sm-12 oj-md-7 oj-form-control-full-width"></oj-text-area>
+            </div>
+        </template>
+    </oj-list-view>
+</div>
+<oj-dialog style="display:none" dialog-title="Dialog" id="oj-dialog-1651458888-1" cancel-behavior="escape" resize-behavior="none">
+    <div slot="body">
+        <div class="oj-flex">
+            <oj-label id="oj-label-1651458888-1" class="oj-flex-item">Do you want to clear all history?</oj-label>
+        </div>
+    </div>
+    <div slot="footer">
+        <oj-button on-oj-action="[[$listeners.OJBUTTON16514588881OjAction]]" id="OJ-BUTTON-1651458888-1">Clear All</oj-button>
+        <oj-button id="oj-button-1651458888-3" on-oj-action="[[$listeners.ojButton16514588883OjAction]]">Cancel</oj-button>
+    </div>
+</oj-dialog>
+

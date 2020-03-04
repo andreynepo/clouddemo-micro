@@ -1,0 +1,43 @@
+<!--
+  Show When Ready  Demo view
+  Copyright (c) 2019, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+-->
+
+<div class="oj-flex-bar oj-sm-align-items-center">
+    <div class="oj-flex-bar-start">
+        <oj-bind-if test="[[addNav()]]">
+            <oj-button display="all" on-oj-action="[[goBack]]">
+                <span slot='startIcon' class="oj-fwk-icon oj-fwk-icon-back"></span>
+                Back
+            </oj-button>
+        </oj-bind-if>
+    </div>
+    <div class="oj-flex-bar-middle" style="margin-left: 20px;">
+        <h1>show-when-ready Component</h1>
+    </div>
+</div>
+<div class="oj-flex oj-flex-items-pad">
+    <div class="oj-flex-item oj-panel">
+        <h3>Configuration</h3>
+        <oj-form-layout label-edge="start">
+            <oj-switch value="{{readyValue}}" label-hint="Make ready"></oj-switch>
+            <oj-switch value="{{emulateDTMode}}" label-hint="Emulate VBCS DT"></oj-switch>
+            <oj-switch value="{{emulateBusyState}}" label-hint="Emulate Busy System"></oj-switch>
+        </oj-form-layout>
+        <h3>Methods</h3>
+        <oj-button on-oj-action="[[callRefresh]]">refresh()</oj-button>
+    </div>
+    <div class="oj-flex-item oj-panel">
+        <h3>oj-sample-show-when-ready</h3>
+        <oj-sample-show-when-ready id="oj-sample-show-when-ready" ready="[[readyValue]]" load-state="{{state}}" translations.page-loading="foo">
+            <p> Content that will be revealed</p>
+            <oj-switch></oj-switch>
+        </oj-sample-show-when-ready>
+    </div>
+    <div class="oj-flex-item oj-panel">
+        <h3>Result</h3>
+        <p>Ready state is <oj-bind-text value="[[state]]"></oj-bind-text>
+        </p>
+    </div>
+</div>

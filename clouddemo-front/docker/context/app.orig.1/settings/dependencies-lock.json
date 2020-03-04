@@ -1,0 +1,11 @@
+{
+    "component-dependencies": {
+        "oj-sample": {
+            "version": "2.3.0",
+            "components": {
+                "tooltip": "1.0.2",
+                "show-when-ready": "2.0.1"
+            }
+        }
+    }
+}

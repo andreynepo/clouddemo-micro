@@ -1,0 +1,133 @@
+{
+    "defaultPage": "shell",
+    "types": {},
+    "variables": {},
+    "chains": {},
+    "configuration": {
+        "initParams": {
+            "profile": "base_configuration"
+        }
+    },
+    "description": "VB App for Oracle Cloud Demo",
+    "services": {
+        "api": {
+            "path": "services/api/service.json"
+        },
+        "uploadToObjectStorage": {
+            "path": "services/uploadToObjectStorage/service.json"
+        },
+        "apiV1": {
+            "path": "services/apiV1/service.json"
+        }
+    },
+    "security": {
+        "access": {
+            "requiresAuthentication": false
+        }
+    },
+    "applicationModelVersion": "19.3.1",
+    "translations": {
+        "app": {
+            "path": "./resources/strings/app/nls/app-strings"
+        }
+    },
+    "requirejs": {
+        "paths": {
+            "oj-sample": "build/components/oj-sample/2.3.0"
+        },
+        "bundles": {
+            "bundles/vb-app-bundle": [
+                "app-flow",
+                "text!app-flow.json",
+                "text!oj-sample/component.json",
+                "text!oj-sample/show-when-ready/component.json",
+                "text!oj-sample/show-when-ready/show-when-ready-view.html",
+                "ojL10n",
+                "oj-sample/show-when-ready/resources/nls/show-when-ready-strings",
+                "oj-sample/show-when-ready/show-when-ready-viewModel",
+                "css!oj-sample/show-when-ready/show-when-ready-styles",
+                "oj-sample/show-when-ready/loader",
+                "oj-sample/show-when-ready/extension/demo/js/viewModels/demo",
+                "text!oj-sample/show-when-ready/extension/demo/js/views/demo.html",
+                "oj-sample/show-when-ready/extension/tests/viewModels/testModel",
+                "text!oj-sample/show-when-ready/extension/tests/views/test.html",
+                "oj-sample/show-when-ready/extension/tests/tests",
+                "text!oj-sample/show-when-ready/show-when-ready-view.html",
+                "oj-sample/show-when-ready/resources/nls/show-when-ready-strings",
+                "oj-sample/show-when-ready/show-when-ready-viewModel",
+                "text!oj-sample/show-when-ready/component.json",
+                "css!oj-sample/show-when-ready/show-when-ready-styles",
+                "oj-sample/show-when-ready/loader",
+                "oj-sample/show-when-ready/min/loader",
+                "oj-sample/show-when-ready/min/resources/nls/root/show-when-ready-strings",
+                "oj-sample/show-when-ready/min/resources/nls/show-when-ready-strings",
+                "oj-sample/show-when-ready/resources/nls/root/show-when-ready-strings",
+                "text!oj-sample/tooltip/component.json",
+                "text!oj-sample/tooltip/tooltip-view.html",
+                "oj-sample/tooltip/resources/nls/tooltip-strings",
+                "oj-sample/tooltip/tooltip-viewModel",
+                "css!oj-sample/tooltip/tooltip-styles",
+                "oj-sample/tooltip/loader",
+                "oj-sample/tooltip/extension/demo/js/viewModels/demo",
+                "text!oj-sample/tooltip/extension/demo/js/views/demo.html",
+                "text!oj-sample/tooltip/extension/dt/dtTemplate.html",
+                "oj-sample/tooltip/extension/tests/viewModels/testModel",
+                "text!oj-sample/tooltip/extension/tests/views/test.html",
+                "oj-sample/tooltip/extension/tests/tests",
+                "text!oj-sample/tooltip/tooltip-view.html",
+                "oj-sample/tooltip/resources/nls/tooltip-strings",
+                "oj-sample/tooltip/tooltip-viewModel",
+                "text!oj-sample/tooltip/component.json",
+                "css!oj-sample/tooltip/tooltip-styles",
+                "oj-sample/tooltip/loader",
+                "oj-sample/tooltip/min/loader",
+                "oj-sample/tooltip/min/resources/nls/root/tooltip-strings",
+                "oj-sample/tooltip/min/resources/nls/tooltip-strings",
+                "oj-sample/tooltip/resources/nls/root/tooltip-strings",
+                "flows/main/main-flow",
+                "text!flows/main/main-flow.json",
+                "text!flows/main/pages/main-start-page.html",
+                "flows/main/pages/main-start-page",
+                "text!flows/main/pages/main-start-page.json",
+                "pages/resources/strings/shell/nls/root/shell-strings",
+                "pages/resources/strings/shell/nls/shell-strings",
+                "text!pages/shell-page.html",
+                "pages/shell-page",
+                "text!pages/shell-page.json",
+                "text!private/custom/versions.json",
+                "css!resources/css/app",
+                "resources/strings/app/nls/app-strings",
+                "resources/strings/app/nls/root/app-strings",
+                "text!services/apiV1/service.json",
+                "text!services/catalog.json",
+                "text!settings/dependencies.json"
+            ]
+        }
+    },
+    "id": "ocr",
+    "userConfig": {
+        "configuration": {
+            "idcsInfo": {
+                "hostName": "https://idcs-1c2ae53121564634897c349338c648e3.identity.oraclecloud.com:443",
+                "clientId": "37a9ba468cc04fd4826f9dd751ba0ebf",
+                "oAuthRedirectEndpoint": "https://clouddemo-vbcs-devtestws.builder.ocp.oraclecloud.com:443/ic/builder/rt/clouddemo_ng/1.0.26/webApps/ocr/",
+                "allowedScopes": [
+                    "https://4FF557A06E6B4F6AB11BD2B68C059787.builder.ocp.oraclecloud.com:443urn:opc:resource:consumer::all"
+                ]
+            },
+            "url": "https://clouddemo-vbcs-devtestws.builder.ocp.oraclecloud.com:443/ic/builder/rt/clouddemo_ng/1.0.26/_currentuser",
+            "authentication": {
+                "type": "oraclecloud"
+            }
+        },
+        "embedding": "deny",
+        "type": "vb/DefaultSecurityProvider"
+    },
+    "events": {
+        "navigateToItem": {
+            "payloadType": {
+                "item": "string"
+            }
+        }
+    }
+}
