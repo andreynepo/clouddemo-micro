@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: api
-  replicas: 2
+  replicas: 4
   template:
     metadata:
       labels:
@@ -39,7 +39,7 @@ spec:
   selector:
     matchLabels:
       app: front
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -65,7 +65,7 @@ spec:
   selector:
     matchLabels:
       app: db
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -91,7 +91,7 @@ spec:
   selector:
     matchLabels:
       app: wc
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
