@@ -14,4 +14,4 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 8080
 
 WORKDIR "/home/opc/app/"
-CMD ["python3", "/home/oracle/app/api.py"]
+CMD ["python3", "/home/opc/app/api.py"]

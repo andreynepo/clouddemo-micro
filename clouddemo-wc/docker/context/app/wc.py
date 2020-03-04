@@ -28,7 +28,7 @@ def color_func (word, font_size, position, orientation, random_state=None, **kwa
 def genwordcloud (fulltext):
     try:
         wordcloud = WordCloud (max_font_size=60, max_words=30, background_color="white", collocations=False).generate(fulltext)
-        wordcloud.recolor (color_func=color_func, random_state=3)
+#        wordcloud.recolor (color_func=color_func, random_state=3)
         image = wordcloud.to_image ()
         output = io.BytesIO ()
         image.save (output, format="PNG")
