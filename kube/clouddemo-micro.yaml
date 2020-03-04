@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - topologyKey: kubernetes.io/hostname
+            labelSelector:
+              matchLabels:
+                app: api
+      containers:
+        - name: api
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro-api:latest
+          resources:
+            requests:
+              cpu: "0.5"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+spec:
+  selector:
+    matchLabels:
+      app: front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+        - name: front
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro-front:latest
+          resources:
+            requests:
+              cpu: "0.1"
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  selector:
+    matchLabels:
+      app: db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - name: db
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro-db:latest
+          resources:
+            requests:
+              cpu: "0.1"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wc
+spec:
+  selector:
+    matchLabels:
+      app: wc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wc
+    spec:
+      containers:
+        - name: wc
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro-wc:latest
+          resources:
+            requests:
+              cpu: "0.1"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      imagePullSecrets:
+        - name: regcred
+

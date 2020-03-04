@@ -1,6 +1,6 @@
 #/bin/bash
 echo Building image...
-docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro-db ~/clouddemo-micro/clouddemo-db/docker/
+docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro-db clouddemo-db/docker/
 
 #echo Stopping container...
 #docker stop db

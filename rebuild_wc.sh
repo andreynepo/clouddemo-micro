@@ -1,6 +1,6 @@
 #/bin/bash
 echo Building image...
-docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro-wc ~/clouddemo-micro/clouddemo-wc/docker/
+docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro-wc clouddemo-wc/docker/
 
 #echo Stopping container...
 #docker stop wc
