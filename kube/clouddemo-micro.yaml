@@ -21,7 +21,7 @@ spec:
                 app: api
       containers:
         - name: api
-          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro-api:latest
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro/api:latest
           resources:
             requests:
               cpu: "0.5"
@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
         - name: front
-          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro-front:latest
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro/front:latest
           resources:
             requests:
               cpu: "0.1"
@@ -73,7 +73,7 @@ spec:
     spec:
       containers:
         - name: db
-          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro-db:latest
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro/db:latest
           resources:
             requests:
               cpu: "0.1"
@@ -99,7 +99,7 @@ spec:
     spec:
       containers:
         - name: wc
-          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro-wc:latest
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro/wc:latest
           resources:
             requests:
               cpu: "0.1"

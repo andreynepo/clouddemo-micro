@@ -1,6 +1,6 @@
 #/bin/bash
 echo Building image...
-docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro-db clouddemo-db/docker/
+docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro/db clouddemo-db/docker/
 
 #echo Stopping container...
 #docker stop db
@@ -9,6 +9,6 @@ docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro-db clouddemo-db/docker/
 #docker container rm db
 
 #echo Starting container...
-#docker run -dit --net localnet --name db --restart=always fra.ocir.io/$NAMESPACE/clouddemo-micro-db:latest
+#docker run -dit --net localnet --name db --restart=always fra.ocir.io/$NAMESPACE/clouddemo-micro/db:latest
 
 #docker ps
