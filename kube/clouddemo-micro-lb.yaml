@@ -24,7 +24,6 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-  type: NodePort
 ---
 apiVersion: v1
 kind: Service
@@ -37,7 +36,6 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-  type: NodePort
 ---
 apiVersion: v1
 kind: Service
@@ -50,4 +48,3 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-  type: NodePort
