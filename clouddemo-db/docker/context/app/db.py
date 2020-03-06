@@ -20,7 +20,7 @@ CORS (app)
 
 dbuser="demo"
 dbpw="myWSPassword_01"
-connstr="workshop_tp"
+connstr="clouddemo_tp"
 
 def dbconnect (dbuser, dbpw, connstr):
     return cx_Oracle.connect(dbuser, dbpw, connstr, encoding="UTF-8")
