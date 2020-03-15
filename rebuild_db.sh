@@ -1,14 +1,14 @@
 #/bin/bash
-echo Building image...
-docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro/db clouddemo-db/docker/
-
-#echo Stopping container...
-#docker stop db
-
-#echo Removing container...
-#docker container rm db
-
-#echo Starting container...
-#docker run -dit --net localnet --name db --restart=always fra.ocir.io/$NAMESPACE/clouddemo-micro/db:latest
-
-#docker ps
+echo NAMESPACE: $NAMESPACE
+if [ $NAMESPACE != "" ]
+then
+  if [ -d clouddemo-db/docker/context/.wallet ]
+  then
+    echo Building image...
+    docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro/db clouddemo-db/docker/
+  else
+    echo "Error: .wallet not found."
+  fi
+else
+  echo "Error: NAMESPACE env variable not set."
+fi

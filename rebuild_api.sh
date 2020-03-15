@@ -1,14 +1,14 @@
 #/bin/bash
-echo Building image...
-docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro/api clouddemo-api/docker/
-
-#echo Stopping container...
-#docker stop api
-
-#echo Removing container...
-#docker container rm api
-
-#echo Starting container...
-#docker run -dit --net localnet --name api --restart=always fra.ocir.io/$NAMESPACE/clouddemo-micro/api:latest
-
-#docker ps
+echo NAMESPACE: $NAMESPACE
+if [ $NAMESPACE != "" ]
+then
+  if [ -d clouddemo-api/docker/context/.oci ]
+  then
+    echo Building image...
+    docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro/api clouddemo-api/docker/
+  else
+    echo "Error: .oci not found."
+  fi
+else
+  echo "Error: NAMESPACE env variable not set."
+fi

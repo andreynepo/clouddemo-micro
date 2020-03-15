@@ -1,2 +1,0 @@
-clouddemo.git
-
