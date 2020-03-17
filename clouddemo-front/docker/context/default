@@ -57,12 +57,19 @@ server {
 		add_header Pragma "no-cache";
 		add_header Expires "Wed, 11 Jan 1984 05:00:00 GMT";
 		
+		proxy_read_timeout 240s;
+		
 		subs_filter_types text/xml text/css text/javascript application/xml application/json application/javascript;
 		subs_filter backend.clouddemo.ru $host;
         }
 
 	location /api {
-		proxy_pass http://api:8080;
+    proxy_set_header  Host $host;
+    proxy_set_header  X-Real-IP $remote_addr;
+    proxy_set_header  X-Forwarded-For $remote_addr;
+    proxy_set_header  X-Forwarded-Host $remote_addr;
+		proxy_read_timeout 180s;
+    proxy_pass http://api:8080;
 	}
 
         # pass PHP scripts to FastCGI server
