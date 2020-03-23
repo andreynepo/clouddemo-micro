@@ -101,6 +101,7 @@ def getwordcloud():
 def upload():
     remote_ip = ""
     user_agent = ""
+    print (request.environ);
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
         remote_ip = request.environ['REMOTE_ADDR'].split (',')[0]
     else:
