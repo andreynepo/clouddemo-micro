@@ -1,39 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api
-spec:
-  selector:
-    matchLabels:
-      app: api
-  replicas: 4
-  template:
-    metadata:
-      labels:
-        app: api
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - topologyKey: kubernetes.io/hostname
-            labelSelector:
-              matchLabels:
-                app: api
-      containers:
-        - name: api
-          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro/api:latest
-          resources:
-            requests:
-              cpu: "0.5"
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-      imagePullSecrets:
-        - name: regcred
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: front
 spec:
   selector:
@@ -60,6 +27,47 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - topologyKey: kubernetes.io/hostname
+            labelSelector:
+              matchLabels:
+                app: api
+      containers:
+        - name: api
+          image: fra.ocir.io/{{NAMESPACE}}/clouddemo-micro/api:latest
+          resources:
+            requests:
+              cpu: "0.5"
+         volumeMounts:
+           - mountPath: "/home/opc/.oci"
+             name: oci-wallet
+             readOnly: true
+         ports:
+            - containerPort: 8080
+              protocol: TCP
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: oci-wallet
+          secret:
+            secretName: oci-wallet
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: db
 spec:
   selector:
@@ -77,11 +85,19 @@ spec:
           resources:
             requests:
               cpu: "0.1"
+         volumeMounts:
+           - mountPath: "/opt/oracle/instantclient_19_5/network/admin"
+             name: db-wallet
+             readOnly: true
           ports:
             - containerPort: 8080
               protocol: TCP
       imagePullSecrets:
         - name: regcred
+      volumes:
+        - name: db-wallet
+          secret:
+            secretName: db-wallet
 ---
 apiVersion: apps/v1
 kind: Deployment
