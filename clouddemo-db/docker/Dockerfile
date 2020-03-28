@@ -15,7 +15,7 @@ RUN python3 -m pip install --no-cache-dir cx_Oracle flask flask_cors requests
 
 RUN apt-get remove -y unzip curl && apt-get autoremove -y && apt-get clean -y
 
-COPY ./context/.wallet/ /opt/oracle/instantclient_19_5/network/admin/
+#COPY ./context/.wallet/ /opt/oracle/instantclient_19_5/network/admin/
 COPY ./context/app/ /home/opc/app/
 
 EXPOSE 8080

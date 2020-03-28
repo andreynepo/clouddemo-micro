@@ -11,7 +11,7 @@ RUN python3 -m pip install --no-cache-dir flask flask_cors requests oci pytesser
 
 #RUN apt-get remove -y unzip curl && apt-get autoremove -y && apt-get clean -y
 
-COPY ./context/.oci/ /home/opc/.oci/
+#COPY ./context/.oci/ /home/opc/.oci/
 COPY ./context/app/ /home/opc/app/
 
 EXPOSE 8080
