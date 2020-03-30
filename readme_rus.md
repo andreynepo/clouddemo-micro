@@ -250,11 +250,9 @@ height="0.8150284339457567in"} В появившемся окне выберит
 После окончания установки OCI CLI выполните команду создания
 конфигурации:
 ```shell
-andrey_nep@cloudshell:~ (eu-frankfurt-1)\$ <b>oci setup config</b>
-
+andrey_nep@cloudshell:~ (eu-frankfurt-1)\$ oci setup config
 This command provides a walkthrough of creating a valid CLI config file.
-
-\...
+...
 ```
 ![](./media/image14.png){width="4.728323490813648in"
 height="1.6991426071741031in"} Вам потребуется User OCID. Для его
@@ -280,21 +278,16 @@ OCID и вставьте его в ответ на запрос.
 Программа установки предложит сгенерировать ключ для доступа к OCI CLI.
 Оставьте параметры и пути без изменения, нажав несколько раз Enter.
 
-\...
-
-Private key written to: /home/andrey\_nep/.oci/oci\_api\_key.pem
-
+```shell
+...
+Private key written to: /home/andrey_nep/.oci/oci_api_key.pem
 Fingerprint: cc:a1:3d:a9:27:d1:4c:7e:09:50:7c:2d:0e:af:9a:0a
-
 Config written to /home/andrey\_nep/.oci/config
-
 If you haven\'t already uploaded your public key through the console,
-
-follow the instructions on the page linked below in the section \'How to
-
-upload the public key\':
-
-https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm\#How2
+follow the instructions on the page linked below in the section 'How to
+upload the public key':
+https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#How2
+```
 
 Далее необходимо создать API Key для доступа к OCI.
 
