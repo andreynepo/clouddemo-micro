@@ -249,13 +249,13 @@ height="0.8150284339457567in"} В появившемся окне выберит
 
 После окончания установки OCI CLI выполните команду создания
 конфигурации:
-
+```shell
 andrey\_nep\@cloudshell:\~ (eu-frankfurt-1)\$ **oci setup config**
 
 This command provides a walkthrough of creating a valid CLI config file.
 
 \...
-
+```
 ![](./media/image14.png){width="4.728323490813648in"
 height="1.6991426071741031in"} Вам потребуется User OCID. Для его
 получения перейдите в детальную информацию пользователя api и скопируйте
