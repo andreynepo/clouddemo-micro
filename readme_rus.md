@@ -249,7 +249,7 @@ height="0.8150284339457567in"} В появившемся окне выберит
 
 После окончания установки OCI CLI выполните команду создания
 конфигурации:
-#1
+# 1
 ```console
 andrey_nep@cloudshell:~ (eu-frankfurt-1)$ oci setup config
 This command provides a walkthrough of creating a valid CLI config file.
