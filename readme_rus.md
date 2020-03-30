@@ -250,7 +250,7 @@ height="0.8150284339457567in"} В появившемся окне выберит
 После окончания установки OCI CLI выполните команду создания
 конфигурации:
 ```console
-andrey_nep@cloudshell:~ (eu-frankfurt-1)\$ oci setup config
+andrey_nep@cloudshell:~ (eu-frankfurt-1)$ oci setup config
 This command provides a walkthrough of creating a valid CLI config file.
 ...
 ```
@@ -297,20 +297,13 @@ https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#How2
 
 Скопируйте содержимое этого файла после выполнения команды:
 ```console
-andrey\_nep\@cloudshell:\~ (eu-frankfurt-1)\$ **cat
-/home/andrey\_nep/.oci/oci\_api\_key\_public.pem**
-
-\-\-\-\--BEGIN PUBLIC KEY\-\-\-\--
-
+andrey_nep@cloudshell:~ (eu-frankfurt-1)$ cat /home/andrey_nep/.oci/oci_api_key_public.pem
+-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApwLrzvzWtmAqxCxj2KCd
-
-\...
-
+...
 ZQcXU+6XyUFcyfSZ9K1savuva3NEr0b9PkKtigv/WQDFSd8HsTtiN2ASebV7RAlq
-
 SQIDAQAB
-
-\-\-\-\--END PUBLIC KEY\-\-\-\--
+-----END PUBLIC KEY-----
 ```
 
 В меню пользователя внизу выберите API Keys.
