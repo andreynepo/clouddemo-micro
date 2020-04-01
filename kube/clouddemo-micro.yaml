@@ -22,7 +22,7 @@ spec:
             - containerPort: 80
               protocol: TCP
       imagePullSecrets:
-        - name: regcred
+        - name: docker-wallet
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -59,7 +59,7 @@ spec:
             - containerPort: 8080
               protocol: TCP
       imagePullSecrets:
-        - name: regcred
+        - name: docker-wallet
       volumes:
         - name: oci-wallet
           secret:
@@ -93,7 +93,7 @@ spec:
             - containerPort: 8080
               protocol: TCP
       imagePullSecrets:
-        - name: regcred
+        - name: docker-wallet
       volumes:
         - name: db-wallet
           secret:
@@ -123,5 +123,4 @@ spec:
             - containerPort: 8080
               protocol: TCP
       imagePullSecrets:
-        - name: regcred
-
+        - name: docker-wallet
