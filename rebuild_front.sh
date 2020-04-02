@@ -1,9 +1,10 @@
 #!/bin/bash
 echo NAMESPACE: $NAMESPACE
-if [ $NAMESPACE != "" ]
+echo REGION: $REGION
+if [ $NAMESPACE != "" ] && [ $REGION != "" ]
 then
   echo Building image...
-  docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro/front clouddemo-front/docker/
+  docker build -t $REGION.ocir.io/$NAMESPACE/clouddemo-micro/front clouddemo-front/docker/
 #  echo Stopping container...
 #  docker stop front
 #  echo Removing container...
@@ -14,6 +15,6 @@ then
 else
   echo "Usage:"
   echo "export NAMESPACE=<YOURNAMESPACE>"
+  echo "export REGION=<YOURREGION>"
   echo "./rebuild_front.sh"
-  echo "where <YOURNAMESPACE> is your namespace ID"
 fi

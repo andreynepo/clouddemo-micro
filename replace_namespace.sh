@@ -1,7 +1,8 @@
-if [ "$1" != "" ]
+if [ "$NAMESPACE" != "" ] && [ "$REGION" != "" ] 
 then
-  echo Replacing Namespace value...
-  find kube -type f -name "*.yaml" -exec sed -i "s/{{NAMESPACE}}/$1/g" {} +
+  echo Replacing Namespace and Region value...
+  find kube -type f -name "*.yaml" -exec sed -i "s/{{NAMESPACE}}/$NAMESPACE/g" {} +
+  find kube -type f -name "*.yaml" -exec sed -i "s/{{REGION}}/$REGION/g" {} +
 else
-  echo "Namespace value should be specified."
+  echo "Namespace or Region value should be specified."
 fi

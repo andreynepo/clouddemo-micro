@@ -1,12 +1,13 @@
 #/bin/bash
 echo NAMESPACE: $NAMESPACE
-if [ $NAMESPACE != "" ]
+echo REGION: $REGION
+if [ $NAMESPACE != "" ] && [ $REGION != "" ]
 then
   echo Building image...
-  docker build -t fra.ocir.io/$NAMESPACE/clouddemo-micro/wc clouddemo-wc/docker/
+  docker build -t $REGION.ocir.io/$NAMESPACE/clouddemo-micro/wc clouddemo-wc/docker/
 else
   echo "Usage:"
   echo "export NAMESPACE=<YOURNAMESPACE>"
+  echo "export REGION=<YOURREGION>"
   echo "./rebuild_wc.sh"
-  echo "where <YOURNAMESPACE> is your namespace ID"
 fi
