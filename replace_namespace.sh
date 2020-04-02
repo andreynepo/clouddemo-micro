@@ -1,3 +1,4 @@
+#!/bin/bash
 if [ "$NAMESPACE" != "" ] && [ "$REGION" != "" ] 
 then
   echo Replacing Namespace and Region value...
