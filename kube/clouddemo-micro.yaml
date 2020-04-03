@@ -92,6 +92,22 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          env:
+            - name: DBUSER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: username
+            - name: DBPW
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: password
+            - name: CONNSTR
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: connection
       imagePullSecrets:
         - name: docker-wallet
       volumes:
