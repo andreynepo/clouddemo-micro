@@ -18,9 +18,21 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS (app)
 
-dbuser="demo"
-dbpw="myWSPassword_01"
-connstr="clouddemo_tp"
+if os.environ['DBUSER'] != None:
+    dbuser = os.environ['DBUSER']
+else:
+    dbuser="demo"
+
+if os.environ['DBPW'] != None:
+    dbpw = os.environ['DBPW']
+else:
+    dbpw="myWSPassword_01"
+
+if os.environ['CONNSTR'] != None:
+    connstr=os.environ['CONNSTR']
+else:
+    connstr="clouddemo_tp"
+
 
 def dbconnect (dbuser, dbpw, connstr):
     return cx_Oracle.connect(dbuser, dbpw, connstr, encoding="UTF-8")
