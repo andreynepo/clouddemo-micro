@@ -13,10 +13,10 @@ import sys
 #import httplib2
 
 from flask import Flask, request, Response, abort, jsonify, url_for, redirect
-from flask_cors import CORS
+#from flask_cors import CORS
 
 app = Flask(__name__)
-CORS (app)
+#CORS (app)
 
 try:
     dbuser = os.environ['DBUSER']
