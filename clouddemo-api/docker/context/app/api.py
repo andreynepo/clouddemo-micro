@@ -73,10 +73,14 @@ def getlist():
         except:
             token = ""
 
+    startmtime = microtime()
     data = requests.post ('http://db:8080/db/v1/list', json={'token': token}).json ()
+    endmtime = microtime()
+    duration = round ((endmtime - startmtime) / 1000, 3)
+
     json_data = json.dumps (data, indent=4)
 
-    print (now (), '/api/v1/list: Token:', token, file=sys.stderr)
+    print (hostname, now (), '/api/v1/list: Token:', token, 'Request duration:', duration, file=sys.stderr)
 
     return Response (json_data, mimetype='application/json')
 
@@ -106,7 +110,7 @@ def upload():
     else:
         remote_ip = request.environ['HTTP_X_FORWARDED_FOR'].split (',')[0]
 
-    print (now(), '/api/v1/upload: IP:', remote_ip)
+    print (hostname, now(), '/api/v1/upload: IP:', remote_ip)
     
     user_agent = request.headers['User-Agent']
 
@@ -173,9 +177,13 @@ def upload():
         values['ipaddr'] = remote_ip
         values['useragent'] = user_agent
 
+        startmtime = microtime()
         response = requests.post ('http://db:8080/db/v1/insert', json=json.dumps (values))
 
-        print (hostname, now (), '/api/v1/list: Token:', token, file=sys.stderr)
+        endmtime = microtime()
+        duration = round ((endmtime - startmtime) / 1000, 3)
+
+        print (hostname, now (), '/api/v1/upload: Token:', token, 'Request duration:', duration, file=sys.stderr)
 
         filetime = microtime()
         wcoutput = genwordcloud (token)
