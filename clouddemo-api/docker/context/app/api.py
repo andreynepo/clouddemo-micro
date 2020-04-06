@@ -17,11 +17,11 @@ import sys
 #import httplib2
 
 from flask import Flask, request, Response, abort, jsonify
-#from flask_cors import CORS
+from flask_cors import CORS
 from PIL import Image
 
 app = Flask(__name__)
-#CORS (app)
+CORS (app)
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
