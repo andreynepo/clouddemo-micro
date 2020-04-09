@@ -18,19 +18,19 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS (app)
 
-if os.environ['DBUSER'] != None:
+try:
     dbuser = os.environ['DBUSER']
-else:
+except:
     dbuser="demo"
 
-if os.environ['DBPW'] != None:
+try:
     dbpw = os.environ['DBPW']
-else:
+except:
     dbpw="myWSPassword_01"
 
-if os.environ['CONNSTR'] != None:
+try:
     connstr=os.environ['CONNSTR']
-else:
+except:
     connstr="clouddemo_tp"
 
 
@@ -121,6 +121,8 @@ def insert():
     try:
         content = json.loads (request.get_json())
         cursor = dbcheck (connection).cursor()
+
+        print (content)
 
         cursor.execute("INSERT INTO ocr (hostname, finished, starttime, endtime, duration, text, filename, token, link, ipaddr, useragent) VALUES (:hostname, 1, TO_DATE (:starttime, 'YYYY-MM-DD HH24:MI:SS'), TO_DATE (:endtime, 'YYYY-MM-DD HH24:MI:SS'), :duration, :text, :filename, :token, :link, :ipaddr, :useragent)", \
             hostname=content['hostname'], starttime=content['starttime'], endtime=content['endtime'], duration=content['duration'], text=content['text'], filename=content['filename'], token=content['token'], link=content['link'], ipaddr=content['ipaddr'], useragent=content['useragent'])
