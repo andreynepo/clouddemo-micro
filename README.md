@@ -1,24 +1,4 @@
-Добро пожаловать на практикум по Kubernetes и микросервисам в Oracle Cloud!
+Добро пожаловать на практикум по Kubernetes и микросервисам в Oracle Cloud! [Нажмите для перехода к инструкции](doc/rus/index.md).
 =============================
-
-### Перед началом практикума [зарегистрируйте и активируйте бесплатный тестовый доступ к облаку Oracle.](doc/rus/ft.md)
-
-### Ознакомьтесь, пожалуйста, с [видеозаписью практикума.](https://www.youtube.com/watch?v=ZJ33VTQdiBk&elq_mid=159008&sh=17061518261626012616120526311421070234&cmid=)
-
-
-
-### Содержание:
-
-## [1. Вводная часть](doc/rus/p1.md)
-
-## [2. Подготовка: OCI CLI](doc/rus/p2.md)
-
-## [3. Подготовка: автономная база данных](doc/rus/p3.md)
-
-## [4. Подготовка инфраструктуры](doc/rus/p4.md)
-
-## [5. Запуск приложения](doc/rus/p5.md)
-
-## [6. Работа с Kubernetes](doc/rus/p6.md)
-
-## [7. Завершение и очистка](doc/rus/p7.md)
+Welcome to Oracle Cloud Kubernetes & Microservices Hands-on Lab! [Click here to open instruction](doc/eng/index.md).
+=============================
