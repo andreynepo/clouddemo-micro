@@ -1,58 +1,56 @@
-# Получение бесплатного тестового доступа к облачным сервисам Oracle
+# Subscribing to Oracle Cloud Free Trial
 
-Откройте сайт Oracle: https://www.oracle.com/
-
-Далее скриншоты приведены для английской версии сайта.
+Open Oracle Website: https://www.oracle.com/
 
 ![](media/ft/image1.png)
 
-Нажмите **Try Oracle Cloud Free Tier**
+Press **Try Oracle Cloud Free Tier**
 
 ![](media/ft/image2.png)
 
-Нажмите **Start for Free**
+Press **Start for Free**
 
 ![](media/ft/image3.png)
 
-Выберите страну, введите ваш адрес электронной почты и поставьте галочки о согласии с условиями, затем нажмите **Next**.
+Select your country, enter your email address and check your agreement with terms and conditions, then press **Next**.
 
-**Важно использовать тот же адрес электронной почты, который вы указывали при регистрации на практикум.**
+**If you have registered to Oracle online event which provides special access to Free Trial, please use the same email address as you have used with the event registration.**
 
-Далее введите информацию:
+Enter following information:
 
-* Имя аккаунта, или Tenancy Name (по которому будет идентифицироваться аккаунт в облаке)
-* Домашний регион (датацентр). Ознакомиться со списком регионов можно по ссылке: https://www.oracle.com/cloud/data-regions.html Регион выбирается для триального аккаунта один раз, и поменять его в будущем нельзя. 
-* Некоторые регионы относятся к категории **Always Free Eligible** - это означает, что в них есть возможность бесплатного использования ряда ресурсов даже после окончания триала. Более подробно ознакомиться с возможностями **Always Free** можно по ссылке: https://docs.cloud.oracle.com/en-us/iaas/Content/FreeTier/freetier.htm Доступность таких ресурсов также зависит от текущей загрузки датацентра.
-* Фамилию, имя и адрес (включая почтовый индекс). Желательно заполнять эту информацию на английском языке.
+* Account name, or Tenancy Name (which will identify your cloud account).
+* Home region (or home datacenter). 
+  Full list of datacenters: https://www.oracle.com/cloud/data-regions.html 
+  You can choose your home region only once for trial account and can't change it later. 
+* Some regions are **Always Free Eligible**  which means you can use some resources for free even after your trial expires. More details on **Always Free** resources: https://docs.cloud.oracle.com/en-us/iaas/Content/FreeTier/freetier.htm Resources availability also depends on current datacenter load.
+* Your name and address (including postal index).
 
 ![](media/ft/image4.png)
 
-* Номер мобильного телефона, который будет проверен путем отправки SMS.
+* Mobile phone number which will be verified via SMS.
 
-Затем нажмите **Next: Verify Mobile Number**.
+Press **Next: Verify Mobile Number**.
 
 ![](media/ft/image5.png)
 
-Вам будет прислано сообщение с кодом, который необходимо ввести для проверки, и нажать **Verify Code**.
+You will receive SMS with verification code. Enter the code and press **Verify Code**.
 
-Если код не пришел в течение нескольких минут, его можно выслать повторно или попробовать другой номер мобильного телефона.
+If you didn't receive your code in few minutes, you can resend it or try to use different mobile number.
 
 ![](media/ft/image6.png)
 
-После проверки мобильного телефона придумайте и введите пароль от аккаунта. Обратите внимание на требования для пароля.
+After mobile phone verification enter your account password. Please pay attention to password requirements.
 
 ![](media/ft/image7.png)
 
-Затем нажмите **Next**.
+Then press **Next**.
 
-**Обратите внимание! Если вы регистрируете триальный аккаунт на тот же email адрес, который указывали при регистрации практикума, и ранее вы не регистрировали на него триал в облаке Oracle, вам не потребуется вводить данные кредитной карты.**
+**If you are registering your account using the same email which you have used to register to Oracle event, and you didn't use this email before for Oracle Cloud free trial, you will not need to enter your credit card details for account verification.**
 
-Данные кредитной карты вводятся только для проверки. На карте может быть заблокирована (а через некоторое время возвращена) небольшая сумма. **За пользование облаком деньги с карты списываться не будут, если только вы сами явным образом не перейдете на платный доступ после окончания триала.**
+Payment information is used for verification only. **You will not be charged for cloud services unless you switch to paid account by yourself.**
 
 ![](media/ft/image8.png)
 
-После ввода данных кредитной карты и проверки вам на указанный email через некоторое время придет письмо с данными аккаунта и временным паролем.
+After payment verification you will receive an email with your account details.
 
-Воспользуйтесь им для входа в аккаунт Oracle Cloud и поменяйте пароль на постоянный.
-
-С этого момента вы можете пользоваться облачными сервисами Oracle в объеме 300 долларов (или 250 евро) в течение 30 дней (или меньше, если денежные средства закончатся раньше).
+You can use free Oracle Cloud services in the amount of 300 USD (or 250 Euro) during 30 days (or less if you spend free credits earlier).
