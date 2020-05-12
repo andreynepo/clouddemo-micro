@@ -1,7 +1,7 @@
 Welcome to Oracle Cloud Kubernetes & Microservices Hands-on Lab!
 =============================
 
-### Before start, please [register and activate Free Trial.](doc/eng/ft.md)
+### Before start, please [register and activate Free Trial.](ft.md)
 
 
 
