@@ -9,8 +9,8 @@ from datetime import date
 import json
 import oci
 import io
-#import pytesseract
-#import PIL
+import pytesseract
+import PIL
 import logging
 import sys
 
@@ -33,8 +33,8 @@ microtime = lambda: int(round(time.time() * 1000))
 os.environ['OMP_THREAD_LIMIT'] = '1'
 
 config = oci.config.from_file(file_location="../.oci/config")
-#compartment_id = config["tenancy"]
-compartment_id = "ocid1.compartment.oc1..aaaaaaaaaphk36ry5vghub24nzdnwuy3chkm4t26mejxf4ah6rufy3fw2ywa"
+compartment_id = config["tenancy"]
+#compartment_id = "ocid1.compartment.oc1..aaaaaaaaaphk36ry5vghub24nzdnwuy3chkm4t26mejxf4ah6rufy3fw2ywa"
 object_storage = oci.object_storage.ObjectStorageClient(config)
 namespace = object_storage.get_namespace().data
 bucket_name = "clouddemo-public"
@@ -89,8 +89,8 @@ def getwordcloud():
     token = request.args.get ('token')
     filename = "wordcloud.png"
     try:
-        obj = object_storage.list_objects(namespace, bucket_name, prefix=token + '/' + filename)
-        data = [dict ({"ID": 1, "url": getDownloadLink (namespace, bucket_name) + token + '/' + filename + "?t=" + str (microtime())})]
+        obj = object_storage.list_objects(namespace, token, prefix=filename)
+        data = [dict ({"ID": 1, "url": getDownloadLink (namespace, token) + filename + "?t=" + str (microtime())})]
     except:
         filename=""
         data = [dict ({"ID": 1, "url": ""})]
@@ -111,7 +111,7 @@ def upload():
         remote_ip = request.environ['HTTP_X_FORWARDED_FOR'].split (',')[0]
 
     print (hostname, now(), '/api/v1/upload: IP:', remote_ip)
-
+    
     user_agent = request.headers['User-Agent']
 
     input_file = io.BytesIO ()
@@ -123,21 +123,15 @@ def upload():
 
         if len (token) > 0:
             try:
-#                obj = object_storage.get_bucket (namespace, token)
-                obj = object_storage.get_bucket (namespace, bucket_name)
+                obj = object_storage.get_bucket (namespace, token)
             except:
-#                obj = object_storage.create_bucket (namespace, oci.object_storage.models.CreateBucketDetails(name=token, compartment_id=compartment_id, public_access_type='ObjectReadWithoutList'))
-                obj = object_storage.create_bucket (namespace, oci.object_storage.models.CreateBucketDetails(name=bucket_name, compartment_id=compartment_id, public_access_type='ObjectReadWithoutList'))
+                obj = object_storage.create_bucket (namespace, oci.object_storage.models.CreateBucketDetails(name=token, compartment_id=compartment_id, public_access_type='ObjectReadWithoutList'))
 
-#            obj = object_storage.put_object(namespace, token, fileName, request.data)
-#            endpoint = getDownloadLink (namespace, token) + fileName
-            obj = object_storage.put_object(namespace, bucket_name, token +'/' + fileName, request.data)
-            endpoint = getDownloadLink (namespace, bucket_name) + token +'/' + fileName
+            obj = object_storage.put_object(namespace, token, fileName, request.data)
+            endpoint = getDownloadLink (namespace, token) + fileName
         else:
-#            obj = object_storage.put_object(namespace, token, bucket_name, request.data)
-#            endpoint = getDownloadLink + (namespace, bucket_name) + fileName
-            obj = object_storage.put_object(namespace, bucket_name, token +'/' + fileName, request.data)
-            endpoint = getDownloadLink + (namespace, bucket_name) + token +'/' + fileName
+            obj = object_storage.put_object(namespace, token, bucket_name, request.data)
+            endpoint = getDownloadLink + (namespace, bucket_name) + fileName
 
         input_file.write (request.data)
 
@@ -163,14 +157,7 @@ def upload():
     if input_image:
         print (hostname, now(), '/api/v1/upload: Image size:', input_image.width, input_image.height, file=sys.stderr)
 
-#        text = (pytesseract.image_to_string (input_image, config = '--psm 1', lang='eng+rus'))
-        response = requests.post ('http://ocr:8080/ocr', json={'filename': token + '/' + fileName, 'bucket': bucket_name}).json()
-        text = response['text']
-
-#    response = requests.post ('http://db:8080/db/v1/gettext', json={'token': token}).json ()
-#    return response['text']
-#        output = io.BytesIO ()
-#        output.write (response.content)
+        text = (pytesseract.image_to_string (input_image, config = '--psm 1', lang='eng+rus'))
 
         endtime = now ()
         endmtime = microtime()
@@ -201,8 +188,7 @@ def upload():
         filetime = microtime()
         wcoutput = genwordcloud (token)
         wcfilename = 'wordcloud.png'
-#        obj = object_storage.put_object(namespace, token, wcfilename, wcoutput.getvalue ())
-        obj = object_storage.put_object(namespace, bucket_name, token + '/'+ wcfilename, wcoutput.getvalue ())
+        obj = object_storage.put_object(namespace, token, wcfilename, wcoutput.getvalue ())
         wcoutput.close
 
         fileduration = round ((microtime () - filetime) / 1000, 6)
