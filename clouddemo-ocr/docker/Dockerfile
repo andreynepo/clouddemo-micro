@@ -11,10 +11,10 @@ RUN python3 -m pip install --no-cache-dir flask requests oci pytesseract
 
 #RUN apt-get remove -y unzip curl && apt-get autoremove -y && apt-get clean -y
 
-#COPY ./context/.oci/ /home/opc/.oci/
+COPY ./context/.oci/ /home/opc/.oci/
 COPY ./context/app/ /home/opc/app/
 
 EXPOSE 8080
 
 WORKDIR "/home/opc/app/"
-CMD ["python3", "/home/opc/app/api.py"]
+CMD ["python3", "/home/opc/app/ocr.py"]
