@@ -28,6 +28,18 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: ocr
+spec:
+  selector:
+    app: ocr
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: db
 spec:
   selector:

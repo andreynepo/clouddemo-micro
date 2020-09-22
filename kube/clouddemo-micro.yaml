@@ -32,11 +32,45 @@ spec:
   selector:
     matchLabels:
       app: api
-  replicas: 4
+  replicas: 2
   template:
     metadata:
       labels:
         app: api
+    spec:
+      containers:
+        - name: api
+          image: {{REGION}}.ocir.io/{{NAMESPACE}}/clouddemo-micro/api:latest
+          resources:
+            requests:
+              cpu: "0.1"
+          volumeMounts:
+            - mountPath: "/home/opc/.oci"
+              name: oci-wallet
+              readOnly: true
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      imagePullSecrets:
+        - name: docker-wallet
+      volumes:
+        - name: oci-wallet
+          secret:
+            secretName: oci-wallet
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocr
+spec:
+  selector:
+    matchLabels:
+      app: ocr
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: ocr
     spec:
       affinity:
         podAntiAffinity:
@@ -44,10 +78,10 @@ spec:
           - topologyKey: kubernetes.io/hostname
             labelSelector:
               matchLabels:
-                app: api
+                app: ocr
       containers:
-        - name: api
-          image: {{REGION}}.ocir.io/{{NAMESPACE}}/clouddemo-micro/api:latest
+        - name: ocr
+          image: {{REGION}}.ocir.io/{{NAMESPACE}}/clouddemo-micro/ocr:latest
           resources:
             requests:
               cpu: "0.5"
