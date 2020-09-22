@@ -64,7 +64,7 @@ def ocr():
     endmtime = microtime()
     duration = round ((endmtime - startmtime) / 1000, 3)
 
-    print (hostname, now(), '/api/v1/ocr: Reading image from object storage:', duration, 's.' file=sys.stderr)
+    print (hostname, now(), '/api/v1/ocr: Reading image from object storage:', duration, 's.', file=sys.stderr)
 
     startmtime = microtime()
 
