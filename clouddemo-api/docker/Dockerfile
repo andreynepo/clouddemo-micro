@@ -4,10 +4,11 @@ ENV PYTHONUNBUFFERED=1
 ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get install -y tesseract-ocr tesseract-ocr-rus \
-	&& mkdir /home/opc && mkdir /home/opc/app
+#RUN apt-get update && apt-get install -y tesseract-ocr tesseract-ocr-rus \
+#	&& mkdir /home/opc && mkdir /home/opc/app
+RUN mkdir /home/opc && mkdir /home/opc/app
 
-RUN python3 -m pip install --no-cache-dir flask requests oci pytesseract
+RUN python3 -m pip install --no-cache-dir flask requests oci Pillow
 
 #RUN apt-get remove -y unzip curl && apt-get autoremove -y && apt-get clean -y
 
