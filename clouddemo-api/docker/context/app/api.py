@@ -32,8 +32,8 @@ microtime = lambda: int(round(time.time() * 1000))
 
 os.environ['OMP_THREAD_LIMIT'] = '1'
 
-config = oci.config.from_file(file_location="../.oci/config")
-compartment_id = config["tenancy"]
+#config = oci.config.from_file(file_location="../.oci/config")
+#compartment_id = config["tenancy"]
 #compartment_id = "ocid1.compartment.oc1..aaaaaaaaaphk36ry5vghub24nzdnwuy3chkm4t26mejxf4ah6rufy3fw2ywa"
 signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
 #object_storage = oci.object_storage.ObjectStorageClient(config)
