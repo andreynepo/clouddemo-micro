@@ -1,8 +1,8 @@
 FROM python:3.8-slim
 
 ENV PYTHONUNBUFFERED=1
-ENV LD_LIBRARY_PATH=/opt/oracle/instantclient_19_5/
-ENV TNS_ADMIN=/opt/oracle/instantclient_19_5/network/admin/
+ENV LD_LIBRARY_PATH=/opt/oracle/instantclient_19_8/
+ENV TNS_ADMIN=/opt/oracle/instantclient_19_8/network/admin/
 ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
