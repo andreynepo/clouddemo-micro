@@ -57,7 +57,7 @@ def ocr():
     fileName = content['filename']
     bucketName = content['bucket']
     token = content['token']
-    endpoint = getDownloadLink + (namespace, bucket_name) + token +'/' + fileName
+    endpoint = getDownloadLink (namespace, bucketName) + token +'/' + fileName
 
     startmtime = microtime()
     obj = object_storage.get_object(namespace, bucketName, fileName)

@@ -139,7 +139,7 @@ def upload():
 #            obj = object_storage.put_object(namespace, token, bucket_name, request.data)
 #            endpoint = getDownloadLink + (namespace, bucket_name) + fileName
             obj = object_storage.put_object(namespace, bucket_name, token +'/' + fileName, request.data)
-            endpoint = getDownloadLink + (namespace, bucket_name) + token +'/' + fileName
+            endpoint = getDownloadLink (namespace, bucket_name) + token +'/' + fileName
 
         input_file.write (request.data)
 
