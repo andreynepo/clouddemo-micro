@@ -57,7 +57,7 @@ def ocr():
     fileName = content['filename']
     bucketName = content['bucket']
     token = content['token']
-    endpoint = getDownloadLink (namespace, bucketName) + token +'/' + fileName
+    endpoint = getDownloadLink (namespace, bucketName) + fileName
 
     startmtime = microtime()
     obj = object_storage.get_object(namespace, bucketName, fileName)
@@ -93,8 +93,8 @@ def ocr():
         values['filename'] = fileName
         values['token'] = token
         values['link'] = endpoint
-#        values['ipaddr'] = remote_ip
-#        values['useragent'] = user_agent
+        values['ipaddr'] = 'none'
+        values['useragent'] = 'empty'
 
         startmtime = microtime()
         response = requests.post ('http://db:8080/db/v1/insert', json=json.dumps (values))
