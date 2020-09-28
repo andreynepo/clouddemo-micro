@@ -166,7 +166,7 @@ def upload():
         print (hostname, now(), '/api/v1/upload: Image size:', input_image.width, input_image.height, file=sys.stderr)
 
 #        text = (pytesseract.image_to_string (input_image, config = '--psm 1', lang='eng+rus'))
-        response = requests.post ('http://ocr:8080/ocr', json={'filename': token + '/' + fileName, 'bucket': bucket_name}).json()
+        response = requests.post ('http://ocr:8080/ocr', json={'filename': token + '/' + fileName, 'bucket': bucket_name, 'token': token}).json()
         text = response['text']
 
 #    response = requests.post ('http://db:8080/db/v1/gettext', json={'token': token}).json ()
@@ -180,35 +180,35 @@ def upload():
 
         print (hostname, now(), '/api/v1/upload: Recognized text:', len (text), 'bytes,', duration, 's.', file=sys.stderr)
 
-        values = {}
-        values['hostname'] = hostname
-        values['starttime'] = starttime
-        values['endtime'] = endtime
-        values['duration'] = duration
-        values['text'] = text
-        values['filename'] = fileName
-        values['token'] = token
-        values['link'] = endpoint
-        values['ipaddr'] = remote_ip
-        values['useragent'] = user_agent
+#        values = {}
+#        values['hostname'] = hostname
+#        values['starttime'] = starttime
+#        values['endtime'] = endtime
+#        values['duration'] = duration
+#        values['text'] = text
+#        values['filename'] = fileName
+#        values['token'] = token
+#        values['link'] = endpoint
+#        values['ipaddr'] = remote_ip
+#        values['useragent'] = user_agent
 
-        startmtime = microtime()
-        response = requests.post ('http://db:8080/db/v1/insert', json=json.dumps (values))
+#        startmtime = microtime()
+#        response = requests.post ('http://db:8080/db/v1/insert', json=json.dumps (values))
 
-        endmtime = microtime()
-        duration = round ((endmtime - startmtime) / 1000, 3)
+#        endmtime = microtime()
+#        duration = round ((endmtime - startmtime) / 1000, 3)
 
-        print (hostname, now (), '/api/v1/upload: Token:', token, 'Request duration:', duration, file=sys.stderr)
+#        print (hostname, now (), '/api/v1/upload: Database Insert duration:', duration, file=sys.stderr)
 
-        filetime = microtime()
+        wctime = microtime()
         wcoutput = genwordcloud (token)
         wcfilename = 'wordcloud.png'
 #        obj = object_storage.put_object(namespace, token, wcfilename, wcoutput.getvalue ())
-        obj = object_storage.put_object(namespace, bucket_name, token + '/'+ wcfilename, wcoutput.getvalue ())
+        obj = object_storage.put_object(namespace, bucket_name, token + '/' + wcfilename, wcoutput.getvalue ())
         wcoutput.close
 
-        fileduration = round ((microtime () - filetime) / 1000, 6)
-        print (hostname, now(), '/api/v1/upload: Wordcloud generation time:', fileduration, 's.', file=sys.stderr)
+        wcduration = round ((microtime () - wctime) / 1000, 6)
+        print (hostname, now(), '/api/v1/upload: Wordcloud generation time:', wcduration, 's.', file=sys.stderr)
     else:
         print (hostname, now(), '/api/v1/upload: Error processing image: not an image.', file=sys.stderr)
         return ('Error', 500)

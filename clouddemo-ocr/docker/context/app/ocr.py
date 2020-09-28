@@ -56,6 +56,8 @@ def ocr():
 
     fileName = content['filename']
     bucketName = content['bucket']
+    token = content['token']
+    endpoint = getDownloadLink + (namespace, bucket_name) + token +'/' + fileName
 
     startmtime = microtime()
     obj = object_storage.get_object(namespace, bucketName, fileName)
@@ -68,6 +70,7 @@ def ocr():
 
     print (hostname, now(), '/api/v1/ocr: Reading image from object storage:', duration, 's.', file=sys.stderr)
 
+    starttime = now ()
     startmtime = microtime()
 
     if input_image:
@@ -75,10 +78,29 @@ def ocr():
 
         text = (pytesseract.image_to_string (input_image, config = '--psm 1', lang='eng+rus'))
 
+        endtime = now ()
         endmtime = microtime()
         duration = round ((endmtime - startmtime) / 1000, 3)
 
         print (hostname, now(), '/api/v1/ocr: Recognized text:', len (text), 'bytes,', duration, 's.', file=sys.stderr)
+
+        values = {}
+        values['hostname'] = hostname
+        values['starttime'] = starttime
+        values['endtime'] = endtime
+        values['duration'] = duration
+        values['text'] = text
+        values['filename'] = fileName
+        values['token'] = token
+        values['link'] = endpoint
+#        values['ipaddr'] = remote_ip
+#        values['useragent'] = user_agent
+
+        startmtime = microtime()
+        response = requests.post ('http://db:8080/db/v1/insert', json=json.dumps (values))
+        endmtime = microtime()
+        duration = round ((endmtime - startmtime) / 1000, 3)
+        print (hostname, now(), '/api/v1/ocr: Database Insert duration:', duration, file=sys.stderr)
 
         data = {'text': text}
 
