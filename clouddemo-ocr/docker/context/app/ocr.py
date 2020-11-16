@@ -84,25 +84,25 @@ def ocr():
 
         print (hostname, now(), '/api/v1/ocr: Recognized text:', len (text), 'bytes,', duration, 's.', file=sys.stderr)
 
-        values = {}
-        values['hostname'] = hostname
-        values['starttime'] = starttime
-        values['endtime'] = endtime
-        values['duration'] = duration
-        values['text'] = text
-        values['filename'] = fileName
-        values['token'] = token
-        values['link'] = endpoint
-        values['ipaddr'] = 'none'
-        values['useragent'] = 'empty'
+#        values = {}
+#        values['hostname'] = hostname
+#        values['starttime'] = starttime
+#        values['endtime'] = endtime
+#        values['duration'] = duration
+#        values['text'] = text
+#        values['filename'] = fileName
+#        values['token'] = token
+#        values['link'] = endpoint
+#        values['ipaddr'] = 'none'
+#        values['useragent'] = 'empty'
 
-        startmtime = microtime()
-        response = requests.post ('http://db:8080/db/v1/insert', json=json.dumps (values))
-        endmtime = microtime()
-        duration = round ((endmtime - startmtime) / 1000, 3)
-        print (hostname, now(), '/api/v1/ocr: Database Insert duration:', duration, file=sys.stderr)
+#        startmtime = microtime()
+#        response = requests.post ('http://db:8080/db/v1/insert', json=json.dumps (values))
+#        endmtime = microtime()
+#        duration = round ((endmtime - startmtime) / 1000, 3)
+#        print (hostname, now(), '/api/v1/ocr: Database Insert duration:', duration, file=sys.stderr)
 
-        data = {'text': text}
+        data = {'text': text, 'hostname': hostname}
 
         json_data = json.dumps (data)
 
