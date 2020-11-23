@@ -33,9 +33,46 @@ try:
 except:
     connstr="clouddemo_tp"
 
+try:
+    db_id=os.environ['DBID']
+except:
+    db_id=""
+
+try:
+    wallet_folder=os.environ['TNS_ADMIN']
+except:
+    wallet_folder="/opt/oracle/instantclient_19_8/network/admin/"
+
+os.environ['ORACLE_HOME'] = os.path.abspath(os.path.join(wallet_folder, '../..'))
+signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
+db_client = oci.database.DatabaseClient({}, signer=signer)
+wallet_password="Wallet123"
+
+def get_wallet(db_client, atp_id, password):
+    atp_wallet = oci.database.models.GenerateAutonomousDatabaseWalletDetails()
+    atp_wallet.password = wallet_password
+
+    atp_wallet_response = db_client.generate_autonomous_database_wallet(
+        autonomous_database_id = atp_id,
+        generate_autonomous_database_wallet_details = atp_wallet,
+    )
+
+    output = io.BytesIO ()
+
+    for data in atp_wallet_response.data:
+        output.write (data)
+
+    with ZipFile(output, 'r') as zipObj:
+        zipObj.extractall(wallet_folder)
 
 def dbconnect (dbuser, dbpw, connstr):
-    return cx_Oracle.connect(dbuser, dbpw, connstr, encoding="UTF-8")
+    if not (os.path.isfile(os.path.join(wallet_folder, 'tnsnames.ora'))):
+        get_wallet(db_client, db_id, wallet_password)
+
+    cx_Oracle.init_oracle_client(config_dir=wallet_folder)
+
+    connection = cx_Oracle.connect(dbuser, dbpw, connstr, encoding="UTF-8")
+    return connection
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)

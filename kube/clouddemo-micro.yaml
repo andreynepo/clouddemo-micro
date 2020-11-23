@@ -121,6 +121,11 @@ spec:
                 secretKeyRef:
                   name: db-secret
                   key: password
+            - name: DBID
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db_ocid
             - name: CONNSTR
               valueFrom:
                 secretKeyRef:
