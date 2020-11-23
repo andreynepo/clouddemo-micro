@@ -47,6 +47,12 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          env:
+            - name: BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: bucket
+                  key: bucket
       imagePullSecrets:
         - name: docker-wallet
 ---
@@ -80,6 +86,12 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          env:
+            - name: BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: bucket
+                  key: bucket
       imagePullSecrets:
         - name: docker-wallet
 ---

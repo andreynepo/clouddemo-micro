@@ -39,7 +39,11 @@ signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
 #object_storage = oci.object_storage.ObjectStorageClient(config)
 object_storage = oci.object_storage.ObjectStorageClient({}, signer=signer)
 namespace = object_storage.get_namespace().data
-bucket_name = "clouddemo-public"
+try:
+    bucket_name = os.environ['BUCKET']
+except:
+    bucket_name = "clouddemo-public"
+
 object_name = ""
 #downloadLink="https://objectstorage.eu-frankfurt-1.oraclecloud.com/n/cloudstarscee/b/clouddemo-public/o/"
 downloadLink="https://objectstorage.eu-frankfurt-1.oraclecloud.com/n/" + namespace + "/b/" + bucket_name + "/o/"
