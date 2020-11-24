@@ -115,10 +115,6 @@ spec:
           resources:
             requests:
               cpu: "0.1"
-          volumeMounts:
-            - mountPath: "/opt/oracle/instantclient_19_8/network/admin"
-              name: db-wallet
-              readOnly: true
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -145,10 +141,6 @@ spec:
                   key: connection
       imagePullSecrets:
         - name: docker-wallet
-      volumes:
-        - name: db-wallet
-          secret:
-            secretName: db-wallet
 ---
 apiVersion: apps/v1
 kind: Deployment
