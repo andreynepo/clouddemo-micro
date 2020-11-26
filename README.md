@@ -1,6 +1,4 @@
-**Внимание! Содержимое данного репозитория находится на обновлении. Проект некоторое время может не работать или работать с ошибками.**
 
-**Attention! This repository is under maintenance due to update. It can work incorrectly or do not work at all for some period of time.**
 
 For English, scroll down.
 
@@ -9,3 +7,5 @@ For English, scroll down.
 
 Welcome to Oracle Cloud Kubernetes & Microservices Hands-on Lab! [Click here to open instruction](doc/eng/index.md).
 =============================
+
+**Please note that English instruction is outdated. Use Russian version instead.**
